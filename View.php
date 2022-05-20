@@ -5,19 +5,18 @@
 $file = fopen("csv/students.csv","r");
 
 // fatch data from csv 
-while(! feof($file))
+while(!feof($file))
   {
     $data[] = fgetcsv($file);
   }
 fclose($file);
 
 
-
 for ($i=0; $i < count($data); $i++) {
 
-    echo "<table class='table table-hover'>";
     
     if($i==0){
+        echo "<table class='table table-hover'>";
         echo "<thead> <tr>";
         
         for ($j=0; $j < count($data[0]); $j++) { 
@@ -29,10 +28,13 @@ for ($i=0; $i < count($data); $i++) {
     }
 
     else{
-        for ($j=0; $j < 5; $j++) { 
+        echo "<tr>";
+        for ($j=0; $j < count($data[$i]); $j++) { 
            
             echo "<td>".$data[$i][$j]."</td>";
         } 
+        echo "</tr>";
+
     }
   }
   echo "</tbody></table>"

@@ -1,7 +1,3 @@
-id,Name,DEPT,Address,Country
-1,Mahbub,CSE,dhaka,bangladesh
-1,mahbub,CSE,dhaka,bangladesh
-1,mahbub,CSE,dhaka,bangladesh
-1,mahbub,CSE,dhaka,bangladesh
-1,mahbub,CSE,dhaka,bangladesh
-1,mahbub,CSE,dhaka,bangladesh
+ID,Name,DEPT,CGPA,Courses,Batch,Gender,Email
+1,Mahbub Alam,CSE,3.90,VIP ALGORITHM ,69-B,Male,mahbubcse96@gmail.com
+
