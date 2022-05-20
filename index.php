@@ -1,29 +1,80 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  </head>
-  <body>
+      <?php
+        include("header.php");
+      ?>
       <?php
         if(isset($_POST["submit"])){
+          echo "<pre>";
             print_r($_POST);
-
+          echo "</pre>";
         }
         ?>
     <div class="container">
-        <form action="" method="post">
-            <input type="text" name="name" placeholder="Enter Name"/>
-            <input type="email" name="mail" placeholder="Enter Email"/>
-            <input type="password" name="pass" placeholder="Enter password"/>
-            <input type="submit" value="Sign Up" name="submit" class="btn btn-primary">
+        <div class="row">
+          <div class="com-md-12">
+              <h2 style="text-align:center">Sign Up From Here</h2>
+            <form action="" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" name="user_name" class="form-control" placeholder="Enter Your Name">
+            </div>
+          
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" name="email" placeholder="Enter Your Email">
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="user_passwd" placeholder="Enter Your Password">
+            </div>
+
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea name="address" class="form-control"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Gender</label>
+              <input type="radio" class="form-check-input" name="gender" id="male" value="male"/>
+              <label for="male" class="form-check-label">Male</label>
+
+              <input type="radio" class="form-check-input" name="gender" id="female" value="female"/>
+              <label for="female" class="form-check-label">Female</label>
+
+            </div>
 
 
-        </form>
+
+            <div class="form-group">
+              <label>Courses:</label>
+              <input type="checkbox" class="form-check-input" name="course[0]" id="vip" value="vip"/>
+              <label for="vip" class="form-check-label">VIP</label>
+
+              <input type="checkbox" class="form-check-input" name="course[1]" id="ml" value="ml"/>
+              <label for="ml" class="form-check-label">Machine Learning</label>
+
+              <input type="checkbox" class="form-check-input" value="algo" id="algo" name="course[2]">
+              <label for="algo" class="form-check-label">ALgorithm</label>
+            </div>
+
+            <div class="form-group">
+              <label for="">Department</label>
+              <select name="dept" id="dept" class="form-select">
+                <option value="cse" class>Computer Science and Engineering<</option>
+                <option value="EEE">Electrical and Electronics Engineering</option>
+                <option value="me">Mechanical Engineering</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <input class="btn btn-primary" type="submit" value="Sign Up" name="submit"/>
+            </div>
+
+
+            </form>
+
+          </div>
+        </div>
         
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-  </body>
-</html>
+   <?php include("footer.php"); ?> 
