@@ -1,3 +1,4 @@
-ID,Name,DEPT,CGPA,Courses,Batch,Gender,Email
-1,Mahbub Alam,CSE,3.90,VIP ALGORITHM ,69-B,Male,mahbubcse96@gmail.com
-
+ID,Name,Email,Gender,Batch,Courses,DEPT
+2,Mahbub,mahbub.alam.sobuz@gmail.com,male,69-b,"ml algo tghus usad jksdfha ",CSE
+2,Mahbub,mahbub.alam.sobuz@gmail.com,male,69-a,"vip ml algo ",EEE
+2,Mahbub,mahbub.alam.sobuz@gmail.com,male,69-b,"VIP ML ALGO ",CSE

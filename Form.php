@@ -1,20 +1,44 @@
 <?php
         include("Header.php");
         include("Navbar.php");
-      ?>
-      <?php
-        if(isset($_POST["submit"])){
-          echo "<pre>";
-            print_r($_POST);
-          echo "</pre>";
-
-          $file = fopen("csv/students.csv","a");
-          
-        //   in this step i need to read all data and store to a variable so that i can handle that datas
         
+        $values = array();
+        if(isset($_POST["submit"])){
+
+          // filtering submit buttons values 
+          foreach($_POST as $val)
+          {
+            if($val != "Sign Up")
+            {
+                if(gettype($val) == "array")
+                {
+                    $temp = "";
+                    foreach($val as $it)
+                    {
+                      
+                        $temp = $temp.strtoupper($it)." ";
+                    }
+                    array_push($values,$temp);
+                }
+                else{
+                    array_push($values,$val);
+                }
+            }
+          }
+
+          
+          $file = fopen("./csv/students.csv","a");
+          if(!$file){
+            echo "<script>alert('File Opening Failed!')</script>";
+            exit(1);
+          }
+
+          fputcsv($file,$values);
+                  
+          fclose($file);
         }
-        ?>
-    <div class="container">
+?>
+      <div class="container">
         <div class="row">
           <div class="com-md-12">
               <h2 style="text-align:center">Student Information Form</h2>
@@ -95,4 +119,11 @@
         </div>
         
     </div>
+    <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
    <?php include("Footer.php"); ?> 
+
+   
