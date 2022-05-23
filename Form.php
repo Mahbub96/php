@@ -72,6 +72,8 @@
           alertDiv("Success ! ");
 
         }
+
+    
 ?>
 
       <div class="container">
@@ -147,7 +149,8 @@
               </select>
             </div>
 
-            <div class="form-group my-2">
+            <div class="form-group my-2 d-flex justify-content-between mt-5">
+              <input class="btn btn-primary" type="reset" value="Reset" name="reset"/>
               <input class="btn btn-primary" type="submit" value="Sign Up" name="submit"/>
             </div>
 
