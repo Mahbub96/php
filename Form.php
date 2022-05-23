@@ -9,37 +9,47 @@
 
         function alertDiv($msg){
 ?>
-          <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-            <strong class="text-center"><?php echo $msg; ?></strong> 
+          <div class="continer">
+          <div class="alert alert-warning alert-dismissible fade show text-center d-flex justify-content-between" role="alert">
+            <strong class="text-center px-5"><?php echo $msg; ?></strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
+          </div>
           </div>
 
 <?php
         }
         
-        if(isset($_POST["submit"])){
-
+        if(isset($_POST["submit"]))
+        {
+          
           // filtering submit buttons values 
           foreach($_POST as $val)
           {
-            if($val != "Sign Up")
+
+            if($val == "Sign Up")
+              break;
+          
+
+            if(gettype($val) == "array")
             {
-                if(gettype($val) == "array")
-                {
                     $temp = "";
+                    
                     foreach($val as $it)
                     {
-                      
-                        $temp = $temp.strtoupper($it)." ";
+                      if($it == '-') 
+                        continue;
+
+                      $temp = $temp.strtoupper($it)." ";
                     }
+
                     array_push($values,$temp);
-                }
-                else{
-                    array_push($values,$val);
-                }
             }
+
+            else
+                array_push($values,$val);
+                
           }
 
           if(!file_exists($file_location)){
@@ -47,9 +57,9 @@
             $table_headers = array("ID","Name","Email","Gender","Batch","Courses","DEPT");
             fputcsv($file,$table_headers);
           }
-          else{
+
+          else
             $file = fopen($file_location,"a");
-          }
           
 
           if(!$file){
@@ -92,10 +102,10 @@
             <!-- gender  -->
             <div class="form-group my-2">
               <label>Gender</label>
-              <input type="radio" class="form-check-input" name="gender" id="male" value="male" required/>
+              <input type="radio" class="form-check-input" name="gender" id="male" value="Male" required/>
               <label for="male" class="form-check-label">Male</label>
 
-              <input type="radio" class="form-check-input" name="gender" id="female" value="female" required/>
+              <input type="radio" class="form-check-input" name="gender" id="female" value="Female" required/>
               <label for="female" class="form-check-label">Female</label>
 
             </div>
@@ -103,26 +113,27 @@
             <!-- Batch  -->
             <div class="form-group my-2">
               <label>Batch</label>
-              <input type="radio" class="form-check-input" name="batch" id="a" value="69-a" required/>
+              <input type="radio" class="form-check-input" name="batch" id="a" value="69-A" required/>
               <label for="a" class="form-check-label">69-A</label>
 
-              <input type="radio" class="form-check-input" name="batch" id="b" value="69-b"required/>
+              <input type="radio" class="form-check-input" name="batch" id="b" value="69-B"required/>
               <label for="b" class="form-check-label">69-B</label>
 
-              <input type="radio" class="form-check-input" name="batch" id="c" value="69-c"required/>
+              <input type="radio" class="form-check-input" name="batch" id="c" value="69-C"required/>
               <label for="c" class="form-check-label">69-C</label>
 
             </div>
 
-            <div class="form-group my-2">
+            <div class="form-group checkbox-group required my-2">
               <label>Courses:</label>
-              <input type="checkbox" class="form-check-input" name="course[0]" id="vip" value="vip" />
+              <input class="d-none" type="checkbox" name="course[0]" value="-" checked />
+              <input type="checkbox" class="form-check-input" name="course[0]" id="vip" value="vip"/>
               <label for="vip" class="form-check-label">VIP</label>
 
               <input type="checkbox" class="form-check-input" name="course[1]" id="ml" value="ml"/>
               <label for="ml" class="form-check-label">Machine Learning</label>
 
-              <input type="checkbox" class="form-check-input" value="algo" id="algo" name="course[2]">
+              <input type="checkbox" class="form-check-input" value="algo" id="algo" name="course[2]"/>
               <label for="algo" class="form-check-label">ALgorithm</label>
             </div>
 
@@ -148,6 +159,8 @@
         
     </div>
       </div>
+
+      <!-- clear current state  -->
     <script>
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
